@@ -1,0 +1,123 @@
+.__pacburger .icon,
+.__pacburger {
+    justify-content: center;
+    padding: 0;
+}
+#_pacburger__circle,
+#_pacburger__triangle,
+.__pacburger .circle {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.__pacburger .circle,
+.__pacburger .icon,
+.__pacburger nav ul a {
+    position: relative;
+    display: flex;
+    background-color: #fff;
+}
+.__pacburger .pacburger {
+    display: flex;
+}
+.__pacburger li.active {
+    display: block;
+}
+.__pacburger #_pacburger__circle {
+    background-color: #fcd34d;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.__pacburger #_pacburger__triangle {
+    transform: rotate(45deg);
+    margin-left: -2rem;
+    position: absolute;
+    z-index: 10;
+}
+@keyframes growShrink {
+    0%, 100% { height: 0; }
+    50% { height: 24px; }
+}
+
+nav {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    overflow-x: hidden;
+    transition: width 1s linear;
+}
+nav.active {
+    width: 350px;
+}
+
+.__pacburger nav ul {
+    list-style: none;
+    width: 0;
+    padding: 0;
+    margin: 0;
+        margin: 0;
+    transition: width 1s linear;
+}
+nav.active ul {
+    width: 100%;
+}
+nav ul li {
+    opacity: 0;
+    transform: rotateY(0);
+    transition: transform 2s linear, opacity 1s linear;
+    margin: 0.5rem 0;
+}
+nav.active ul li {
+    opacity: 1;
+    transform: rotateY(360deg);
+}
+.__pacburger nav ul a {
+    margin: 0 10px;
+    text-decoration: none;
+        color: #000;
+    text-decoration: none;
+}
+
+.icon {
+    cursor: pointer;
+    border: none;
+    height: 30px;
+    width: 30px;
+    position: relative;
+        align-items: center;
+    background: 0 0;
+}
+.icon:focus {
+    outline: none;
+}
+.icon .line, .icon .line2 {
+    background-color: #000;
+    height: 2px;
+    width: 20px;
+    position: absolute;
+    left: 5px;
+    transition: transform 2s linear;
+}
+.icon .line {
+    top: 10px;
+}
+.icon .line2 {
+    bottom: 10px;
+}
+nav.active .icon .line1 {
+    transform: rotate(-765deg) translateY(5.5px);
+}
+nav.active .icon .line2 {
+    transform: rotate(765deg) translateY(-5.5px);
+}
+
+nav:not(.active) #_pacburger__triangle {
+    animation: growShrink 0.8s infinite;
+}
