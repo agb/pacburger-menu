@@ -1,3 +1,5 @@
+import "./style.css";
+
 interface rawMenuList {
   label: string;
   href: string;
@@ -9,7 +11,6 @@ class PacBurgerMenu {
   constructor(rawMenuItems: rawMenuList[]) {
     this.menuItems = this._createMenuItems(rawMenuItems);
     this._createPacBurger();
-    this._addStyles();
     this._addToggleEvent();
   }
 
@@ -60,15 +61,6 @@ class PacBurgerMenu {
     pacburgerDiv.appendChild(nav);
 
     document.body.appendChild(pacburgerDiv);
-  }
-
-  private async _addStyles(): Promise<void> {
-    const response = await fetch("/style.css");
-    const styles = await response.text();
-    const styleSheet = document.createElement("style");
-    styleSheet.innerText = styles;
-
-    document.head.appendChild(styleSheet);
   }
 
   private _addToggleEvent(): void {
