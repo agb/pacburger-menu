@@ -7,6 +7,7 @@ interface rawMenuList {
 
 class PacBurgerMenu {
   private menuItems: HTMLLIElement[];
+  private pacburgerClassPrefix = "__pacburger";
 
   constructor(rawMenuItems: rawMenuList[]) {
     this.menuItems = this._createMenuItems(rawMenuItems);
@@ -26,50 +27,45 @@ class PacBurgerMenu {
   }
 
   private _createPacBurger(): void {
-    const pacburgerDiv = document.createElement("div");
-    pacburgerDiv.className = "__pacburger";
-
-    const nav = document.createElement("nav");
-    nav.className = "active";
-    nav.id = "nav";
-
     const ul = document.createElement("ul") as HTMLUListElement;
+    const nav = document.createElement("nav");
+    const button = document.createElement("button");
+    const pacburgerDiv = document.createElement("div");
+    const pacmanWrapper = document.createElement("div");
+    const pacmanCircle = document.createElement("div");
+    const pacmanTriangle = document.createElement("div");
 
     this.menuItems.forEach((li) => {
       ul.appendChild(li);
     });
 
-    const button = document.createElement("button");
-    button.className = "icon";
-    button.id = "toggle";
+    pacburgerDiv.className = this.pacburgerClassPrefix;
+    nav.className = `${this.pacburgerClassPrefix}_nav`;
+    button.className = `${this.pacburgerClassPrefix}_button_icon`;
+    pacmanWrapper.className = `${this.pacburgerClassPrefix}_div_pacman_wrapper`;
+    pacmanCircle.className = `${this.pacburgerClassPrefix}_div_pacman_circle`;
+    pacmanTriangle.className = `${this.pacburgerClassPrefix}_div_pacman_triangle`;
 
-    const circleDiv = document.createElement("div");
-    circleDiv.className = "circle";
-
-    const pacburgerCircle = document.createElement("div");
-    pacburgerCircle.id = "_pacburger__circle";
-
-    const pacburgerTriangle = document.createElement("div");
-    pacburgerTriangle.id = "_pacburger__triangle";
-
-    circleDiv.appendChild(pacburgerCircle);
-    circleDiv.appendChild(pacburgerTriangle);
-    button.appendChild(circleDiv);
-
+    pacmanWrapper.appendChild(pacmanCircle);
+    pacmanWrapper.appendChild(pacmanTriangle);
+    button.appendChild(pacmanWrapper);
     nav.appendChild(ul);
     nav.appendChild(button);
     pacburgerDiv.appendChild(nav);
-
     document.body.appendChild(pacburgerDiv);
   }
 
   private _addToggleEvent(): void {
-    const toggle = document.getElementById("toggle");
-    const nav = document.getElementById("nav");
+    const toggle = document.getElementsByClassName(
+      `${this.pacburgerClassPrefix}_button_icon`
+    );
+    const nav = document.getElementsByClassName(
+      `${this.pacburgerClassPrefix}_nav`
+    );
 
     if (toggle && nav) {
-      toggle.addEventListener("click", () => {
-        nav.classList.toggle("active");
+      toggle[0].addEventListener("click", () => {
+        nav[0].classList.toggle("active");
       });
     }
   }
