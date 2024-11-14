@@ -1,7 +1,8 @@
 .__pacburger {
-    display: flex;
-    justify-content: center;
-    padding: 0;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 999;
 }
 
 .__pacburger_button_icon,
@@ -10,24 +11,47 @@
     display: flex;
     background-color: #fff;
 }
-
-.__pacburger_div_pacman_wrapper,
 .__pacburger_div_pacman_circle,
 .__pacburger_div_pacman_triangle {
     width: 1.5rem;
-    height: 1.5rem;
-    position: absolute;
+    height: 0.25rem;
+    background-color: #fcd34d;
+    gap: 1rem;
+    transition: height 0.6s ease, transform 0.6s ease; 
 }
 
-.__pacburger_div_pacman_wrapper,
-.__pacburger_div_pacman_circle {
-    width: 1.5rem;
+.__pacburger_nav:not(.active) .__pacburger_div_pacman_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+.__pacburger_nav:not(.active) .__pacburger_div_pacman_circle,
+.__pacburger_nav:not(.active) .__pacburger_div_pacman_triangle {
+    border-radius: 6px;
+}
+
+.__pacburger_nav.active .__pacburger_div_pacman_circle,
+.__pacburger_nav.active .__pacburger_div_pacman_triangle {
     height: 1.5rem;
-    background-color: #fcd34d;
+    position: absolute;
+    transition: height 0.6s ease, transform 0.6s  ease; 
+}
+
+.__pacburger_nav.active .__pacburger_div_pacman_circle {
+    transform: rotate(45deg); 
+}
+
+.__pacburger_nav.active .__pacburger_div_pacman_triangle {
+    transform: rotate(-45deg); 
+}
+
+.__pacburger_nav.active .__pacburger_div_pacman_circle {
     border-radius: 50%;
 }
 
-.__pacburger_div_pacman_triangle {
+.__pacburger_nav.active .__pacburger_div_pacman_triangle {
     transform: rotate(45deg);
     margin-left: -1rem;
     z-index: 10;
@@ -35,17 +59,13 @@
 }
 
 .__pacburger_nav {
-    list-style: none;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 80px;
     padding: 1rem;
     background-color: #fff;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    overflow-x: hidden;
-    transition: width 1s linear;
+    transition: width 0.9s linear;
 }
 
 
@@ -94,7 +114,7 @@
 }
 
 .__pacburger_nav.active .__pacburger_div_pacman_triangle {
-    animation: growShrink 0.8s infinite;
+    animation: growShrink 0.8s ease-in-out 3.6;
 }
 
 @keyframes growShrink {
