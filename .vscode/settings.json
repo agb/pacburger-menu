@@ -1,6 +1,8 @@
 {
-    "cSpell.words": [
-        "pacburger",
-        "pacman"
-    ]
+  "cSpell.words": ["pacburger", "pacman"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true
 }
