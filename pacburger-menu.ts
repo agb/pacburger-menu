@@ -72,10 +72,9 @@ class PacBurgerMenu {
 }
 
 const pacburgerList: rawMenuList[] = [
-  { label: "#lgsta", href: "#" },
-  { label: "#2", href: "#" },
-  { label: "#3", href: "#" },
-  { label: "#4", href: "#" },
+  { label: "Portfolio", href: "https://agb.github.io/portfolio" },
+  { label: "Behance", href: "https://behance.com/agokselb" },
+  { label: "Github", href: "https://github.com/agb" },
 ];
 
 new PacBurgerMenu(pacburgerList);
