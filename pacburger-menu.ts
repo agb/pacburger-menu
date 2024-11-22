@@ -40,6 +40,7 @@ class PacBurgerMenu {
     });
 
     pacburgerDiv.className = this.pacburgerClassPrefix;
+    ul.className = `${this.pacburgerClassPrefix}_ul horizontal`;
     nav.className = `${this.pacburgerClassPrefix}_nav`;
     button.className = `${this.pacburgerClassPrefix}_button_icon`;
     pacmanWrapper.className = `${this.pacburgerClassPrefix}_div_pacman_wrapper`;
@@ -57,10 +58,10 @@ class PacBurgerMenu {
 
   private _addToggleEvent(): void {
     const toggle = document.getElementsByClassName(
-      `${this.pacburgerClassPrefix}_button_icon`
+      `${this.pacburgerClassPrefix}_button_icon`,
     );
     const nav = document.getElementsByClassName(
-      `${this.pacburgerClassPrefix}_nav`
+      `${this.pacburgerClassPrefix}_nav`,
     );
 
     if (toggle && nav) {
