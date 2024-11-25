@@ -27,7 +27,7 @@ class PacBurgerMenu {
   }
 
   private _createPacBurger(): void {
-    const ul = document.createElement("ul") as HTMLUListElement;
+    const ul = document.createElement("ul");
     const nav = document.createElement("nav");
     const button = document.createElement("button");
     const pacburgerDiv = document.createElement("div");
