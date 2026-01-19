@@ -17,7 +17,7 @@ class PacBurgerMenu {
 
   private _createMenuItems(items: rawMenuList[]): HTMLLIElement[] {
     return items.map((item) => {
-      const li = document.createElement("li") as HTMLLIElement;
+      const li = document.createElement("li");
       const a = document.createElement("a");
       a.href = item.href;
       a.textContent = item.label;
@@ -27,46 +27,50 @@ class PacBurgerMenu {
   }
 
   private _createPacBurger(): void {
-    const ul = document.createElement("ul");
+    const wrapper = document.createElement("div");
+    wrapper.className = this.pacburgerClassPrefix;
+
     const nav = document.createElement("nav");
+    nav.className = `${this.pacburgerClassPrefix}_nav`;
+
     const button = document.createElement("button");
-    const pacburgerDiv = document.createElement("div");
-    const pacmanWrapper = document.createElement("div");
-    const pacmanCircle = document.createElement("div");
-    const pacmanTriangle = document.createElement("div");
+    button.className = `${this.pacburgerClassPrefix}_toggle`;
+    button.setAttribute("aria-label", "Toggle navigation");
+
+    // Create 3 bars for the hamburger icon
+    const barTop = document.createElement("span");
+    const barMiddle = document.createElement("span");
+    const barBottom = document.createElement("span");
+
+    barTop.className = "bar top";
+    barMiddle.className = "bar middle";
+    barBottom.className = "bar bottom";
+
+    button.appendChild(barTop);
+    button.appendChild(barMiddle);
+    button.appendChild(barBottom);
+
+    const ul = document.createElement("ul");
+    ul.className = `${this.pacburgerClassPrefix}_menu`;
 
     this.menuItems.forEach((li) => {
       ul.appendChild(li);
     });
 
-    pacburgerDiv.className = this.pacburgerClassPrefix;
-    ul.className = `${this.pacburgerClassPrefix}_ul horizontal`;
-    nav.className = `${this.pacburgerClassPrefix}_nav`;
-    button.className = `${this.pacburgerClassPrefix}_button_icon`;
-    pacmanWrapper.className = `${this.pacburgerClassPrefix}_div_pacman_wrapper`;
-    pacmanCircle.className = `${this.pacburgerClassPrefix}_div_pacman_circle`;
-    pacmanTriangle.className = `${this.pacburgerClassPrefix}_div_pacman_triangle`;
-
-    pacmanWrapper.appendChild(pacmanCircle);
-    pacmanWrapper.appendChild(pacmanTriangle);
-    button.appendChild(pacmanWrapper);
-    nav.appendChild(ul);
     nav.appendChild(button);
-    pacburgerDiv.appendChild(nav);
-    document.body.appendChild(pacburgerDiv);
+    nav.appendChild(ul);
+    wrapper.appendChild(nav);
+    document.body.appendChild(wrapper);
   }
 
   private _addToggleEvent(): void {
-    const toggle = document.getElementsByClassName(
-      `${this.pacburgerClassPrefix}_button_icon`,
-    );
-    const nav = document.getElementsByClassName(
-      `${this.pacburgerClassPrefix}_nav`,
-    );
+    const toggle = document.querySelector(`.${this.pacburgerClassPrefix}_toggle`);
+    const nav = document.querySelector(`.${this.pacburgerClassPrefix}_nav`);
 
     if (toggle && nav) {
-      toggle[0].addEventListener("click", () => {
-        nav[0].classList.toggle("active");
+      toggle.addEventListener("click", () => {
+        nav.classList.toggle("active");
+        toggle.classList.toggle("active");
       });
     }
   }
