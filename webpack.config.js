@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./pacburger-menu.ts",
+  entry: "./index.ts",
   output: {
     filename: "pacburger-menu.bundle.js",
     path: path.resolve(__dirname, "dist"),
