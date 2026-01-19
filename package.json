@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
   "dependencies": {
     "@types/es6-promise": "^3.3.2",
     "core-js": "^3.39.0"
