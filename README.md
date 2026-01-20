@@ -1,27 +1,79 @@
-# pacburger-menu
+# PacBurgerMenu
 
-Pacburger menu is a playful alternative to the traditional hamburger menu.
+PacBurgerMenu is a playful and animated alternative to the traditional hamburger menu, featuring a Pac-Man inspired transformation.
 
-## How to Run
+## Features
 
-1. Install dependencies:
+*   **Animated Toggle:** Smooth transition from hamburger bars to a Pac-Man shape.
+*   **Customizable Menu:** Easily pass your menu items.
+*   **Accessible:** Includes ARIA labels for accessibility.
+*   **Responsive:** Works well on mobile and desktop.
+
+## Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/pacburger-menu.git
+    cd pacburger-menu
+    ```
+
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+## Usage
+
+### Development
+
+To start the development server (watcher):
+
 ```bash
-npm install
+npm start
 ```
 
-2. Build the project:
+### Production Build
+
+To build the project for production:
+
 ```bash
-npx webpack --mode development
+npm run build
 ```
 
-3. Start a local server:
+The output will be in the `dist/` directory.
+
+### Testing
+
+To run the unit tests:
+
 ```bash
-python3 -m http.server 8000
+npm test
 ```
 
-4. Open in your browser:
-```
-http://localhost:8000
+### Integration
+
+You can import the `PacBurgerMenu` class and use it in your project.
+
+```typescript
+import { PacBurgerMenu } from './PacBurgerMenu';
+
+const menuItems = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+];
+
+new PacBurgerMenu(menuItems);
 ```
 
-That's it! The pacburger menu should now be visible in your browser.
+Ensure you have the necessary CSS loader setup if you are bundling it yourself, or include the compiled CSS.
+
+## Project Structure
+
+*   `PacBurgerMenu.ts`: The main component logic.
+*   `style.css`: The styling and animations.
+*   `index.ts`: Entry point for the demo/example.
+*   `PacBurgerMenu.test.ts`: Unit tests.
+
+## License
+
+MIT
